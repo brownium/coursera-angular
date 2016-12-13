@@ -6,20 +6,28 @@
 
   LunchCheckController.$inject = ['$scope'];
   function LunchCheckController($scope) {
-    $scope.enough = "Testing";
+    $scope.enough = "";
     $scope.LunchList = "";
 
-  function SplitString(string) {
-    var stringList = string.split(',');
+  function itemCount(string) {
+    if (string == "") {
+      stringList = [];
+    } else {
+      var stringList = string.split(',');
+    }
     return stringList.length;
   };
 
   $scope.IsTooMuch = function () {
-    var items = SplitString($scope.LunchList);
+    var items = itemCount($scope.LunchList);
     if (items > 3) {
       $scope.enough = "Too Much!!!";
-    } else {
-      $scope.enough = "Eat Up!";
+    }
+    else if (items < 1) {
+      $scope.enough = "Please enter data first";
+    }
+    else {
+      $scope.enough = "Enjoy!";
     }
   };
 
