@@ -25,19 +25,12 @@ function ShoppingListController(ShoppingList) {
 
   list.itemsBought = [];
 
-  list.listCompleteMsg = "";
-  list.listEmptyMsg = "Nothing bought yet.";
-
   list.itemName = "";
   list.itemQuantity = "";
 
   list.buyItem = function (itemIndex) {
     list.itemsBought = ShoppingList.addItem(list.itemsToBuy[itemIndex].name, list.itemsToBuy[itemIndex].quantity);
     list.itemsToBuy = ShoppingList.removeItem(list.itemsToBuy, itemIndex);
-    list.listEmptyMsg = "";
-    if (list.itemsToBuy.length == 0) {
-      this.listCompleteMsg = "Everything is bought!";
-    }
   };
 }
 
